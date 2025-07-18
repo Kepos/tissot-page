@@ -1,0 +1,78 @@
+// src/components/Header.jsx
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <header className="fixed top-0 left-0 w-full ">
+      <div className="max-w-5xl mx-auto px-10 py-8 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex t-logo text-5xl font-bold">T</div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex gap-6 text-gray-700 font-medium">
+          {[
+            'Gartengeräte',
+            'Comedy',
+            'Blogs',
+            'Wissenschaft',
+            'Kreatives',
+            '& mehr',
+          ].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="hover:text-blue-600 transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden"
+          onClick={toggleMenu}
+          aria-label="Toggle Menu"
+        >
+          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Navigation (animated) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            className="md:hidden px-6 pb-4 flex flex-col gap-3 bg-white shadow-md rounded-b-xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {[
+              'Gartengeräte',
+              'Comedy',
+              'Blogs',
+              'Wissenschaft',
+              'Kreatives',
+              '& mehr',
+            ].map((item) => (
+              <a
+                key={item}
+                href="#"
+                className="hover:text-blue-600 transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
