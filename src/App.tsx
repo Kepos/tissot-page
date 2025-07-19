@@ -8,16 +8,16 @@ import pageteasers from './pageteasers.json';
 import Footer from './components/Footer';
 
 function useParallax(value: MotionValue<number>, distance: number) {
-  return useTransform(value, [0, 0.5, 1], [-0, distance, distance]);
+  return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
 }
 
 function App() {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, 550);
+  const y = useParallax(scrollYProgress, 450);
 
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.8, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
 
   return (
     <>
@@ -35,9 +35,9 @@ function App() {
             y: 0,
             transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
           }}
-          style={{ opacity }}
+          style={{ opacity, y }}
         >
-          <h2 className="text-[#ffcd5e] fixed text-3xl ml-12 mb-2 top-[350px]">
+          <h2 className="text-[#ffcd5e] text-3xl ml-12 mb-2 top-[350px]">
             Willkommen bei
           </h2>
         </motion.div>
@@ -48,9 +48,9 @@ function App() {
             y: 0,
             transition: { delay: 1.5, duration: 1.5, ease: 'easeInOut' },
           }}
-          style={{ opacity }}
+          style={{ opacity, y }}
         >
-          <h1 className="text-8xl fixed">Familie Tissot</h1>
+          <h1 className="text-8xl">Familie Tissot</h1>
         </motion.div>
       </div>
       <motion.div
@@ -81,7 +81,7 @@ function App() {
           opacity: 1,
           transition: { delay: 0, duration: 1, ease: 'easeInOut' },
         }}
-        viewport={{ margin: '20px' }}
+        viewport={{ margin: '-300px', once: true }}
       >
         <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5">Hallo!</h2>
       </motion.div>
@@ -91,7 +91,7 @@ function App() {
           opacity: 1,
           transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
         }}
-        viewport={{ margin: '20px' }}
+        viewport={{ margin: '-300px', once: true }}
       >
         <p>
           Wir sind die Familie Tissot. <br />
@@ -133,7 +133,7 @@ function App() {
           ))}
         </div>
       </div>
-      <div className="w-100 h-[1000px]"></div>
+      <div className="w-100 h-[200px]"></div>
       <Footer />
     </>
   );
