@@ -1,7 +1,11 @@
 import wappen from './assets/wappen.png';
+import filz from './assets/filzhintergrund.jpg';
 import './App.css';
 import Header from './components/Header';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
+import PageTeaser from './components/PageTeaser';
+import pageteasers from './pageteasers.json';
+import Footer from './components/Footer';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.5, 1], [-0, distance, distance]);
@@ -17,6 +21,11 @@ function App() {
 
   return (
     <>
+      <img
+        src={filz}
+        alt="Hintergrund Struktur"
+        className="fixed inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
+      />
       <Header />
       <div className="h-[80vh] flex flex-col items-start justify-center">
         <motion.div
@@ -74,7 +83,7 @@ function App() {
         }}
         viewport={{ margin: '20px' }}
       >
-        <h2 className="text-[#ffcd5e] text-2xl mb-3">Hallo!</h2>
+        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5">Hallo!</h2>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -94,7 +103,38 @@ function App() {
           Wir sind halt die Tissot’s.
         </p>
       </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: 1,
+          transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
+        }}
+        viewport={{ margin: '20px', once: true }}
+        className="text-center mt-64"
+      >
+        <h2 className="text-[#ffcd5e] font-[Zapfino] mb-4 text-2xl">
+          Unsere besten Seiten
+        </h2>
+        <p>
+          Dies sind die Webauftritte von allen Tissots, die welche haben.
+          <br /> Gerne einfach mal überall vorbeischauen!
+        </p>
+      </motion.div>
+      <div className="w-full flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 mt-20 max-w-3xl cursor-pointer">
+          {pageteasers.map((item) => (
+            <PageTeaser
+              key={item.id}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              link={item.link}
+            />
+          ))}
+        </div>
+      </div>
       <div className="w-100 h-[1000px]"></div>
+      <Footer />
     </>
   );
 }

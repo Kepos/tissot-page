@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "title": "Gartenshop",
+    "description": "In unserem Gartenshop finden Sie Gartengeräte und Gartenaccessoires, die hochwertig verarbeitet sind und je nach Bodenart den richtigen Bedienkomfort bieten.",
+    "image": "/src/assets/gartenshop.jpg",
+    "link": "https://garten.tissot.de/"
+  },
+  {
+    "id": 2,
+    "title": "Oliver Tissot",
+    "description": "Dr. Oliver Tissot ist eloquenter Entertainer, kongenialer Kabarettist, schlagfertiger Stand-up-Comedian und niveauvoller Business-Hofnarr.",
+    "image": "/src/assets/ollo.jpg",
+    "link": "https://olivertissot.de/"
+  },
+  {
+    "id": 3,
+    "title": "Weinfreunde",
+    "description": "... nicht nur flüssiger Hedonismus",
+    "image": "/src/assets/weinfreund.jpg",
+    "link": "https://www.einfreun.de/"
+  },
+  {
+    "id": 4,
+    "title": "Gartenausstellung",
+    "description": "Damit Sie die Möglichkeit haben, sich von der Qualität der Gartenwerkzeuge zu überzeugen, stellen wir nun schon seit über 20 Jahren auf ausgesuchten Gartenausstellungen unsere Produkte aus.",
+    "image": "/src/assets/ausstellung.jpg",
+    "link": "https://garten.tissot.de/shop_content.php?coID=14"
+  },
+  {
+    "id": 5,
+    "title": "Tassja Tissot",
+    "description": "Titel Thesen Temperamente - Die große Welt der kleinen Tassja mit gaaanz viel Ironie und Sarkasmus wörtlich zusammengefasst. Seien Sie dabei und lesen Sie mit, wenn die kleine Tassja mal wieder Großes zu berichten hat!",
+    "image": "/src/assets/tassja.jpg",
+    "link": "https://tassja.de"
+  },
+  {
+    "id": 6,
+    "title": "Marcus Tissot",
+    "description": "Bilder des Künstler Marcus Tissot aus Igensdorf",
+    "image": "/src/assets/marcus.jpg",
+    "link": "https://art.tissot.de/"
+  },
+  {
+    "id": 7,
+    "title": "Sven Tissot",
+    "description": "Informatiker, Berater, Spieler...",
+    "image": "/src/assets/sven.jpg",
+    "link": "https://sven.tissot.de/"
+  },
+  {
+    "id": 8,
+    "title": "16 Gipfel",
+    "description": "16 Gipfel in 16 Jahren",
+    "image": "/src/assets/gipfel.jpg",
+    "link": "https://www.16gipfel.de/"
+  },
+  {
+    "id": 9,
+    "title": "murggs",
+    "description": "a fränggischer Grimi von und mit Oliver Tissot, den Stars aus Veitshöchheim und Frankens lustigsten Spaßvögeln.",
+    "image": "/src/assets/murggs.jpg",
+    "link": "https://www.facebook.com/murggs"
+  },
+  {
+    "id": 10,
+    "title": "Benedikt Tissot",
+    "description": "Ein paar Informationen von und über Benedikt Tissot.",
+    "image": "/src/assets/benedikt.jpg",
+    "link": "https://tissot.fun/"
+  }
+]
