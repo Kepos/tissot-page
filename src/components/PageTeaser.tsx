@@ -3,7 +3,7 @@ export default function PageTeaser({ title, description, image, link }: any) {
   return (
     <a
       href={link}
-      className="page-teaser block hover:bg-black cursor-pointer p-6 transition-transform duration-500 hover:translate-x-[-0px] hover:-translate-y-[5px] "
+      className="page-teaser block hover:border-[0.5px] hover:border-[#ffcd5e] cursor-pointer p-6 transition-transform duration-500 hover:translate-x-[-5px] hover:-translate-y-[5px] "
       target="_blank"
     >
       <img src={image} />

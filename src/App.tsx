@@ -1,4 +1,5 @@
 import wappen from './assets/wappen.png';
+import goldwappen from './assets/wappen-gold.png';
 import filz from './assets/filzhintergrund.jpg';
 import './App.css';
 import Header from './components/Header';
@@ -14,7 +15,7 @@ function useParallax(value: MotionValue<number>, distance: number) {
 function App() {
   const { scrollYProgress } = useScroll();
 
-  const y = useParallax(scrollYProgress, 450);
+  const y = useParallax(scrollYProgress, 500);
 
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
@@ -29,7 +30,7 @@ function App() {
       <Header />
       <div className="h-[80vh] flex flex-col items-start justify-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{
             opacity: 1,
             y: 0,
@@ -42,7 +43,7 @@ function App() {
           </h2>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{
             opacity: 1,
             y: 0,
@@ -54,10 +55,10 @@ function App() {
         </motion.div>
       </div>
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, marginTop: 50 }}
         animate={{
           opacity: 1,
-          y: 0,
+          marginTop: 0,
           transition: { delay: 3, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y, scale }}
@@ -66,6 +67,18 @@ function App() {
           <img src={wappen} className="w-md" />
         </div>
       </motion.div>
+      {/* <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { delay: 3, duration: 2, ease: 'easeInOut' },
+        }}
+        style={{ scale, bottom }}
+        className="absolute right-0"
+      >
+        <img src={wappen} className="w-md" />
+      </motion.div> */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
@@ -103,6 +116,32 @@ function App() {
           Wir sind halt die Tissot’s.
         </p>
       </motion.div>
+      <div className="flex items-center gap-4 text-center mt-72 max-w-md mx-auto">
+        <motion.div
+          className="flex-grow h-[0.5px] bg-[#ffcd5e] origin-right"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ margin: '-100px 0px' }}
+          transition={{ delay: 0.2, duration: 0.8, ease: 'easeInOut' }}
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ margin: '-100px 0px' }}
+          transition={{ delay: 0, duration: 0.8 }}
+        >
+          <div className="whitespace-nowrap">
+            <img src={goldwappen} className="w-6" />
+          </div>
+        </motion.div>
+        <motion.div
+          className="flex-grow h-[0.5px] bg-[#ffcd5e] origin-left"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ margin: '-100px 0px' }}
+          transition={{ delay: 0.2, duration: 0.8, ease: 'easeInOut' }}
+        />
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{
@@ -110,7 +149,7 @@ function App() {
           transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
         }}
         viewport={{ margin: '20px', once: true }}
-        className="text-center mt-64"
+        className="text-center mt-32"
       >
         <h2 className="text-[#ffcd5e] font-[Zapfino] mb-4 text-2xl">
           Unsere besten Seiten
@@ -123,13 +162,27 @@ function App() {
       <div className="w-full flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 mt-20 max-w-3xl cursor-pointer">
           {pageteasers.map((item) => (
-            <PageTeaser
-              key={item.id}
-              image={item.image}
-              title={item.title}
-              description={item.description}
-              link={item.link}
-            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{
+                opacity: 1,
+                transition: {
+                  delay: 0.3 * item.id,
+                  duration: 1,
+                  ease: 'easeInOut',
+                },
+              }}
+              viewport={{ once: true }}
+              className="cursor-pointer"
+            >
+              <PageTeaser
+                key={item.id}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                link={item.link}
+              />
+            </motion.div>
           ))}
         </div>
       </div>

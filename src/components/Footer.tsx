@@ -4,7 +4,7 @@ const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t-[0.5px] border-[#ffcd5e] py-12 text-sm text-gray-700">
+    <footer className="border-t-[0.5px]  border-[#ffcd5e] py-12 text-sm text-gray-700">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         {/* Left: Logo and Year */}
         <div className="flex flex-col items-center">
@@ -28,7 +28,7 @@ export default function Footer() {
             <a
               className="underline"
               target="_blank"
-              href="hhtps://www.tissot.com"
+              href="https://www.tissotwatches.com/"
             >
               www.tissot.com
             </a>
