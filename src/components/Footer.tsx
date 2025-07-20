@@ -1,10 +1,18 @@
 import wappen from '../assets/wappen-gold.png';
+import { motion } from 'framer-motion';
 
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="border-t-[0.5px]  border-[#ffcd5e] py-12 text-sm text-gray-700">
+    <footer className="pb-12 text-sm text-gray-700">
+      <motion.div
+        className="flex-grow h-[0.5px] bg-[#ffcd5e] origin-left mb-12"
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ margin: '-100px 0px' }}
+        transition={{ delay: 0.2, duration: 0.8, ease: 'easeInOut' }}
+      />
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         {/* Left: Logo and Year */}
         <div className="flex flex-col items-center">
@@ -22,7 +30,7 @@ export default function Footer() {
               Datenschutz
             </a>
           </div>
-          <p className="text-xs text-gray-500 max-w-xs">
+          <p className="text-xs text-gray-500 max-w-xs text-left md:text-right">
             Dies ist nicht der Webauftritt des Schweizer Uhrenherstellers Tissot
             S.A GmbH. Diesen finden Sie unter{' '}
             <a
@@ -30,7 +38,7 @@ export default function Footer() {
               target="_blank"
               href="https://www.tissotwatches.com/"
             >
-              www.tissot.com
+              www.tissotwatches.com
             </a>
           </p>
         </div>

@@ -9,7 +9,7 @@ export default function Header() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-10">
+    <header className="fixed top-0 left-0 w-full z-30">
       <div className="max-w-5xl mx-auto px-10 py-8 flex justify-between items-center">
         {/* Logo */}
         <div className="flex t-logo text-5xl font-bold">T</div>
@@ -36,11 +36,15 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
+          className="md:hidden focus-"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {menuOpen ? (
+            <X className="w-6 h-6 text-[#ffcd5e]" />
+          ) : (
+            <Menu className="w-6 h-6 text-[#ffcd5e]" />
+          )}
         </button>
       </div>
 
@@ -48,7 +52,7 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
-            className="md:hidden px-6 pb-4 flex flex-col gap-3 bg-white shadow-md rounded-b-xl"
+            className="md:hidden px-6 pb-4 pt-4 flex flex-col bg-[#000000b8] border-b-[0.5px] border-amber-400 gap-3 shadow-md"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

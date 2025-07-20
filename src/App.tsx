@@ -17,8 +17,13 @@ function App() {
 
   const y = useParallax(scrollYProgress, 500);
 
+  const isSmallScreen = window.innerWidth < 1024;
+
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
+
+  const smscale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.6, 0.6]);
+  const smy = useTransform(scrollYProgress, [0, 0.3, 1], [-0, 600, 600]);
 
   return (
     <>
@@ -28,7 +33,9 @@ function App() {
         className="fixed inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
       />
       <Header />
-      <div className="h-[80vh] flex flex-col items-start justify-center">
+
+      {/* Willkommen bei Tissot */}
+      <div className="h-[80vh] flex flex-col items-start justify-start md:justify-center">
         <motion.div
           initial={{ opacity: 0, y: 0 }}
           animate={{
@@ -38,7 +45,7 @@ function App() {
           }}
           style={{ opacity, y }}
         >
-          <h2 className="text-[#ffcd5e] text-3xl ml-12 mb-2 top-[350px]">
+          <h2 className="text-[#ffcd5e] text-[6vw] sm:text-2xl md:text-3xl ml-8 -mb-1 md:mt-0 mt-[17vh] sm:ml-12 sm:mb-2 top-[350px]">
             Willkommen bei
           </h2>
         </motion.div>
@@ -51,9 +58,14 @@ function App() {
           }}
           style={{ opacity, y }}
         >
-          <h1 className="text-8xl">Familie Tissot</h1>
+          <h1 className="md:text-8xl text-[20vw] ml-2">
+            Familie
+            <br className="inline sm:inline lg:hidden" /> Tissot
+          </h1>
         </motion.div>
       </div>
+
+      {/* Wappen */}
       <motion.div
         initial={{ opacity: 0, marginTop: 50 }}
         animate={{
@@ -62,23 +74,30 @@ function App() {
           transition: { delay: 3, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y, scale }}
+        className="z-10 hidden md:block"
       >
-        <div className="flex w-full justify-end -mt-70">
+        <div className="flex w-full justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
           <img src={wappen} className="w-md" />
         </div>
       </motion.div>
-      {/* <motion.div
-        initial={{ opacity: 0, y: 50 }}
+
+      {/* Mobile Wappen */}
+      <motion.div
+        initial={{ opacity: 0, marginTop: 50 }}
         animate={{
           opacity: 1,
-          y: 0,
+          marginTop: 0,
           transition: { delay: 3, duration: 2, ease: 'easeInOut' },
         }}
-        style={{ scale, bottom }}
-        className="absolute right-0"
+        style={{ y: smy, scale: smscale }}
+        className="z-10 md:hidden"
       >
-        <img src={wappen} className="w-md" />
-      </motion.div> */}
+        <div className="flex w-full justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
+          <img src={wappen} className="w-md" />
+        </div>
+      </motion.div>
+
+      {/* Red Line */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
@@ -86,17 +105,21 @@ function App() {
           transition: { delay: 4.5, duration: 1, ease: 'easeInOut' },
         }}
       >
-        <div className="w-[60px] h-[8px] bg-[#C40002] absolute top-[80vh]"></div>
+        <div className="w-[60px] md:h-[8px] h-[4px] bg-[#C40002] absolute top-[80vh]"></div>
       </motion.div>
+
+      {/* Hello Text */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: 1,
           transition: { delay: 0, duration: 1, ease: 'easeInOut' },
         }}
-        viewport={{ margin: '-300px', once: true }}
+        viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5">Hallo!</h2>
+        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5 md:mt-0 mt-32">
+          Hallo!
+        </h2>
       </motion.div>
       <motion.div
         initial={{ opacity: 0 }}
@@ -104,9 +127,9 @@ function App() {
           opacity: 1,
           transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
         }}
-        viewport={{ margin: '-300px', once: true }}
+        viewport={{ margin: '-200px 0px', once: true }}
       >
-        <p>
+        <p className="z-20 relative">
           Wir sind die Familie Tissot. <br />
           Seit Generationen erfreuen wir unsere Mitmenschen <br />
           mit jeder Menge Grips, Witz, Kreativität und ganz viel Liebe. <br />
@@ -116,7 +139,9 @@ function App() {
           Wir sind halt die Tissot’s.
         </p>
       </motion.div>
-      <div className="flex items-center gap-4 text-center mt-72 max-w-md mx-auto">
+
+      {/* Golden Divider */}
+      <div className="flex items-center gap-4 text-center md:mt-72 mt-28 max-w-md mx-auto">
         <motion.div
           className="flex-grow h-[0.5px] bg-[#ffcd5e] origin-right"
           initial={{ scaleX: 0 }}
@@ -142,6 +167,8 @@ function App() {
           transition={{ delay: 0.2, duration: 0.8, ease: 'easeInOut' }}
         />
       </div>
+
+      {/* Unsere besten Seiten */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{
@@ -160,14 +187,17 @@ function App() {
         </p>
       </motion.div>
       <div className="w-full flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 mt-20 max-w-3xl cursor-pointer">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-y-12 mt-20 max-w-3xl cursor-pointer">
           {pageteasers.map((item) => (
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{
                 opacity: 1,
                 transition: {
-                  delay: 0.3 * item.id,
+                  delay:
+                    window.innerWidth > 1023
+                      ? 0.3 * (((item.id - 1) % 3) + 1)
+                      : 0.3,
                   duration: 1,
                   ease: 'easeInOut',
                 },
