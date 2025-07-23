@@ -8,8 +8,8 @@ import Footer from './components/Footer';
 import TeaserGrid from './components/TeaserGrid';
 import { useRef } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Impressum from './impressum';
 import ScrollToTop from './ScrollToTop';
+import Impressum from './impressum';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
@@ -35,7 +35,7 @@ function App() {
     }
     pageTeasersRef.current?.scrollIntoView({ behavior: 'smooth' });
     item = item === '& mehr' ? 'Alle' : item;
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       const button = document.getElementById(`page-teaser-category-${item}`);
       if (button) {
         button.click();
