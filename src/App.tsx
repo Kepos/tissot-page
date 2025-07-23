@@ -9,7 +9,7 @@ import TeaserGrid from './components/TeaserGrid';
 import { useRef } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import ScrollToTop from './ScrollToTop';
-import Impressum from './impressum';
+import Impressum from './Impressum';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
