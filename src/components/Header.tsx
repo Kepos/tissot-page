@@ -8,7 +8,11 @@ import {
   useTransform,
 } from 'framer-motion';
 
-export default function Header() {
+export default function Header({
+  onClickScroll,
+}: {
+  onClickScroll: (item: string) => void;
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { scrollY } = useScroll();
@@ -40,7 +44,7 @@ export default function Header() {
             ].map((item) => (
               <a
                 key={item}
-                href="#unsere-besten-seiten"
+                onClick={() => onClickScroll(item)}
                 className="hover:text-blue-600 transition-colors"
               >
                 {item}
@@ -83,7 +87,12 @@ export default function Header() {
             ].map((item) => (
               <a
                 key={item}
-                href="#"
+                onClick={() => {
+                  toggleMenu();
+                  setTimeout(() => {
+                    onClickScroll(item);
+                  }, 400);
+                }}
                 className="hover:text-blue-600 transition-colors"
               >
                 {item}

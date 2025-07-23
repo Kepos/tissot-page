@@ -6,6 +6,7 @@ import Header from './components/Header';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
 import Footer from './components/Footer';
 import TeaserGrid from './components/TeaserGrid';
+import { useRef } from 'react';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
@@ -14,13 +15,26 @@ function useParallax(value: MotionValue<number>, distance: number) {
 function App() {
   const { scrollYProgress } = useScroll();
 
+  const pageTeasersRef = useRef<HTMLDivElement>(null);
+
   const y = useParallax(scrollYProgress, 500);
 
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
 
   const smscale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.6, 0.6]);
-  const smy = useTransform(scrollYProgress, [0, 0.3, 1], [-0, 600, 600]);
+  const smy = useTransform(scrollYProgress, [0, 0.3, 1], [-0, 400, 400]);
+
+  function scrollAndClick(item: string) {
+    pageTeasersRef.current?.scrollIntoView({ behavior: 'smooth' });
+    item = item === '& mehr' ? 'Alle' : item;
+    const timer = setTimeout(() => {
+      const button = document.getElementById(`page-teaser-category-${item}`);
+      if (button) {
+        button.click();
+      }
+    }, 1000);
+  }
 
   return (
     <>
@@ -29,7 +43,7 @@ function App() {
         alt="Hintergrund Struktur"
         className="fixed inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
       />
-      <Header />
+      <Header onClickScroll={(item) => scrollAndClick(item)} />
 
       {/* Willkommen bei Tissot */}
       <div className="h-[80vh] flex flex-col items-start justify-start md:justify-center">
@@ -85,7 +99,7 @@ function App() {
         animate={{
           opacity: 1,
           marginTop: 0,
-          transition: { delay: 2.5, duration: 2, ease: 'easeInOut' },
+          transition: { delay: 2, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y, scale }}
         className="z-10 hidden md:block"
@@ -101,7 +115,7 @@ function App() {
         animate={{
           opacity: 1,
           marginTop: 0,
-          transition: { delay: 3, duration: 2, ease: 'easeInOut' },
+          transition: { delay: 2, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y: smy, scale: smscale }}
         className="z-10 md:hidden"
@@ -116,7 +130,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 4.5, duration: 1, ease: 'easeInOut' },
+          transition: { delay: 3, duration: 1, ease: 'easeInOut' },
         }}
       >
         <div className="w-[60px] md:h-[8px] h-[4px] bg-[#C40002] absolute top-[80vh]"></div>
@@ -190,8 +204,8 @@ function App() {
           transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
         }}
         viewport={{ margin: '20px', once: true }}
-        className="text-center mt-32"
-        id="unsere-besten-seiten"
+        className="text-center mt-8 pt-24"
+        ref={pageTeasersRef}
       >
         <h2 className="text-[#ffcd5e] font-[Zapfino] mb-4 text-2xl">
           Unsere besten Seiten
