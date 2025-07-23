@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import wappen from '../assets/wappen-gold.png';
 import { motion } from 'framer-motion';
 
@@ -23,12 +24,9 @@ export default function Footer() {
         {/* Right: Links and Disclaimer */}
         <div className="flex flex-col items-start sm:items-end text-right gap-2">
           <div className="flex gap-4">
-            <a href="/impressum" className="hover:underline">
+            <Link to="/impressum" className="hover:underline">
               Impressum
-            </a>
-            <a href="/datenschutz" className="hover:underline">
-              Datenschutz
-            </a>
+            </Link>
           </div>
           <p className="text-xs text-gray-500 max-w-xs text-left md:text-right">
             Dies ist nicht der Webauftritt des Schweizer Uhrenherstellers Tissot

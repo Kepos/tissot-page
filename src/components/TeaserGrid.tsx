@@ -23,7 +23,7 @@ export default function TeaserGrid() {
   return (
     <div className="pt-8 flex flex-col items-center">
       {/* FILTER BUTTONS */}
-      <div className="mb-6 mx-auto md:flex gap-3 flex-wrap grid-cols-3 grid">
+      <div className="mb-8  md:flex gap-3 flex-wrap grid-cols-3 grid">
         {FILTERS.map((filter) => (
           <button
             key={filter}

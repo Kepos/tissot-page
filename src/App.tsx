@@ -7,25 +7,32 @@ import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
 import Footer from './components/Footer';
 import TeaserGrid from './components/TeaserGrid';
 import { useRef } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Impressum from './impressum';
+import ScrollToTop from './ScrollToTop';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
 }
 
 function App() {
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress, scrollY } = useScroll();
 
   const pageTeasersRef = useRef<HTMLDivElement>(null);
 
   const y = useParallax(scrollYProgress, 500);
 
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.7, 0.7]);
 
-  const smscale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.6, 0.6]);
-  const smy = useTransform(scrollYProgress, [0, 0.3, 1], [-0, 400, 400]);
+  const smscale = useTransform(scrollY, [0, 600, 600], [1, 0.8, 0.8]);
+  const smy = useTransform(scrollY, [0, 1000, 1000], [-0, 300, 300]);
 
   function scrollAndClick(item: string) {
+    if (item === '') {
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+      return;
+    }
     pageTeasersRef.current?.scrollIntoView({ behavior: 'smooth' });
     item = item === '& mehr' ? 'Alle' : item;
     const timer = setTimeout(() => {
@@ -36,7 +43,7 @@ function App() {
     }, 1000);
   }
 
-  return (
+  const HomePage = () => (
     <>
       <img
         src={filz}
@@ -145,7 +152,7 @@ function App() {
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5 md:mt-0 mt-32">
+        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5 md:mt-0 mt-28">
           Hallo!
         </h2>
       </motion.div>
@@ -250,6 +257,16 @@ function App() {
       <div className="w-100 h-[200px]"></div>
       <Footer />
     </>
+  );
+
+  return (
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/impressum" element={<Impressum />} />
+      </Routes>
+    </Router>
   );
 }
 

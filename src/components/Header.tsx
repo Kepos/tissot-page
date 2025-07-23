@@ -29,7 +29,12 @@ export default function Header({
     <header className="fixed top-0 left-0 w-full z-30">
       <div className="max-w-5xl mx-auto px-10 py-8 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex t-logo text-5xl font-bold">T</div>
+        <div
+          className="flex t-logo text-5xl font-bold cursor-pointer"
+          onClick={() => onClickScroll('')}
+        >
+          T
+        </div>
 
         {/* Desktop Navigation */}
         <motion.nav style={{ opacity, pointerEvents }}>
