@@ -55,7 +55,7 @@ function App() {
           animate={{
             opacity: 1,
             marginTop: 0,
-            transition: { delay: 10.5, duration: 1.5, ease: 'easeInOut' },
+            transition: { delay: 1.5, duration: 1.5, ease: 'easeInOut' },
           }}
           style={{ opacity, y }}
         >

@@ -49,7 +49,19 @@ export default function TeaserGrid() {
               key={item.id}
               layout
               initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  delay:
+                    window.innerWidth > 1023
+                      ? 0.3 * (((item.id - 1) % 3) + 1)
+                      : 0.3,
+                  duration: 1,
+                  ease: 'easeInOut',
+                },
+              }}
+              viewport={{ once: true }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >
