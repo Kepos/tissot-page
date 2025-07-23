@@ -37,24 +37,24 @@ function App() {
       {/* Willkommen bei Tissot */}
       <div className="h-[80vh] flex flex-col items-start justify-start md:justify-center">
         <motion.div
-          initial={{ opacity: 0, y: 0 }}
+          initial={{ opacity: 0, marginTop: 20 }}
           animate={{
             opacity: 1,
-            y: 0,
+            marginTop: 0,
             transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
           }}
           style={{ opacity, y }}
         >
-          <h2 className="text-[#ffcd5e] text-[6vw] sm:text-2xl md:text-3xl ml-8 -mb-1 md:mt-0 mt-[17vh] sm:ml-12 sm:mb-2 top-[350px]">
+          <h2 className="text-[#ffcd5e] text-[6vw] sm:text-2xl md:text-3xl ml-8 -mb-1 md:mt-0 mt-[17vh] sm:ml-12 sm:mb-0 top-[350px]">
             Willkommen bei
           </h2>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 0 }}
+          initial={{ opacity: 0, marginTop: 20 }}
           animate={{
             opacity: 1,
-            y: 0,
-            transition: { delay: 1.5, duration: 1.5, ease: 'easeInOut' },
+            marginTop: 0,
+            transition: { delay: 10.5, duration: 1.5, ease: 'easeInOut' },
           }}
           style={{ opacity, y }}
         >
