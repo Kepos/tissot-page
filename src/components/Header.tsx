@@ -1,10 +1,23 @@
 // src/components/Header.jsx
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { scrollY } = useScroll();
+  // const opacity = useTransform(scrollY, [0, 0.3, 1], [1, 0, 0]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+
+  const pointerEvents = useTransform(opacity, (value) =>
+    value === 0 ? 'none' : 'auto'
+  );
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -15,24 +28,26 @@ export default function Header() {
         <div className="flex t-logo text-5xl font-bold">T</div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 text-gray-700 font-medium">
-          {[
-            'Gartengeräte',
-            'Comedy',
-            'Blogs',
-            'Wissenschaft',
-            'Kreatives',
-            '& mehr',
-          ].map((item) => (
-            <a
-              key={item}
-              href="#"
-              className="hover:text-blue-600 transition-colors"
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
+        <motion.nav style={{ opacity, pointerEvents }}>
+          <nav className="hidden md:flex gap-6 text-gray-700 font-medium">
+            {[
+              'Gartengeräte',
+              'Comedy',
+              'Blogs',
+              'Wissenschaft',
+              'Kreatives',
+              '& mehr',
+            ].map((item) => (
+              <a
+                key={item}
+                href="#unsere-besten-seiten"
+                className="hover:text-blue-600 transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+        </motion.nav>
 
         {/* Mobile Menu Button */}
         <button

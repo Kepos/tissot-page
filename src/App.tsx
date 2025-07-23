@@ -4,8 +4,6 @@ import filz from './assets/filzhintergrund.jpg';
 import './App.css';
 import Header from './components/Header';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
-import PageTeaser from './components/PageTeaser';
-import pageteasers from './pageteasers.json';
 import Footer from './components/Footer';
 import TeaserGrid from './components/TeaserGrid';
 
@@ -17,8 +15,6 @@ function App() {
   const { scrollYProgress } = useScroll();
 
   const y = useParallax(scrollYProgress, 500);
-
-  const isSmallScreen = window.innerWidth < 1024;
 
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
@@ -38,31 +34,48 @@ function App() {
       {/* Willkommen bei Tissot */}
       <div className="h-[80vh] flex flex-col items-start justify-start md:justify-center">
         <motion.div
-          initial={{ opacity: 0, marginTop: 20 }}
-          animate={{
-            opacity: 1,
-            marginTop: 0,
-            transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
-          }}
+          initial="hidden"
+          animate="visible"
           style={{ opacity, y }}
-        >
-          <h2 className="text-[#ffcd5e] text-[6vw] sm:text-2xl md:text-3xl ml-8 -mb-1 md:mt-0 mt-[17vh] sm:ml-12 sm:mb-0 top-[350px]">
-            Willkommen bei
-          </h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, marginTop: 20 }}
-          animate={{
-            opacity: 1,
-            marginTop: 0,
-            transition: { delay: 1.5, duration: 1.5, ease: 'easeInOut' },
+          variants={{
+            visible: {
+              transition: {
+                staggerChildren: 1, // <- this handles sequencing
+              },
+            },
+            hidden: {},
           }}
-          style={{ opacity, y }}
         >
-          <h1 className="md:text-8xl text-[20vw] ml-2">
-            Familie
-            <br className="inline sm:inline lg:hidden" /> Tissot
-          </h1>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              ease: 'easeInOut', // or use a custom cubic bezier: [0.6, 0.01, -0.05, 0.95]
+            }}
+          >
+            <h2 className="text-[#ffcd5e] text-[6vw] sm:text-2xl md:text-3xl ml-8 -mb-1 md:mt-0 mt-[17vh] sm:ml-12 sm:mb-0 top-[350px]">
+              Willkommen bei
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              ease: 'easeInOut', // or use a custom cubic bezier: [0.6, 0.01, -0.05, 0.95]
+            }}
+          >
+            <h1 className="md:text-8xl text-[20vw] ml-2">
+              Familie
+              <br className="inline sm:inline lg:hidden" /> Tissot
+            </h1>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -72,7 +85,7 @@ function App() {
         animate={{
           opacity: 1,
           marginTop: 0,
-          transition: { delay: 3, duration: 2, ease: 'easeInOut' },
+          transition: { delay: 2.5, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y, scale }}
         className="z-10 hidden md:block"
@@ -178,6 +191,7 @@ function App() {
         }}
         viewport={{ margin: '20px', once: true }}
         className="text-center mt-32"
+        id="unsere-besten-seiten"
       >
         <h2 className="text-[#ffcd5e] font-[Zapfino] mb-4 text-2xl">
           Unsere besten Seiten
