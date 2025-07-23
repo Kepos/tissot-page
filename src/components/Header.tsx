@@ -36,7 +36,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden focus-"
+          className="md:hidden mobile-button"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >

@@ -7,6 +7,7 @@ import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
 import PageTeaser from './components/PageTeaser';
 import pageteasers from './pageteasers.json';
 import Footer from './components/Footer';
+import TeaserGrid from './components/TeaserGrid';
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 0.2, 1], [-0, distance, distance]);
@@ -186,7 +187,9 @@ function App() {
           <br /> Gerne einfach mal überall vorbeischauen!
         </p>
       </motion.div>
-      <div className="w-full flex justify-center">
+
+      <TeaserGrid />
+      {/* <div className="w-full flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-y-12 mt-20 max-w-3xl cursor-pointer">
           {pageteasers.map((item) => (
             <motion.div
@@ -215,7 +218,7 @@ function App() {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
       <div className="w-100 h-[200px]"></div>
       <Footer />
     </>
