@@ -260,7 +260,7 @@ function App() {
   );
 
   return (
-    <Router>
+    <Router basename="/tissot-page">
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
