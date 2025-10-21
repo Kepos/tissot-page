@@ -25,7 +25,7 @@ function App() {
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
 
-  const smscale = useTransform(scrollY, [0, 600, 600], [1, 0.8, 0.8]);
+  // const smscale = useTransform(scrollY, [0, 600, 600], [1, 0.8, 0.8]);
   const smy = useTransform(scrollY, [0, 1000, 1000], [-0, 300, 300]);
 
   function scrollAndClick(item: string) {
