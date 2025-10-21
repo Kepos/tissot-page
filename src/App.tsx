@@ -61,7 +61,7 @@ function App() {
           variants={{
             visible: {
               transition: {
-                staggerChildren: 1, // <- this handles sequencing
+                staggerChildren: 0.8, // <- this handles sequencing
               },
             },
             hidden: {},
@@ -124,7 +124,7 @@ function App() {
           marginTop: 0,
           transition: { delay: 2, duration: 2, ease: 'easeInOut' },
         }}
-        style={{ y: smy, scale: smscale }}
+        style={{ y: smy }}
         className="z-10 md:hidden"
       >
         <div className="flex w-full justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
