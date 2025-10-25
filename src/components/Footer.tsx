@@ -23,12 +23,12 @@ export default function Footer() {
 
         {/* Right: Links and Disclaimer */}
         <div className="flex flex-col items-start sm:items-end text-right gap-2">
-          <div className="flex gap-4">
+          <p className="flex gap-4">
             <Link to="/impressum" className="hover:underline">
               Impressum
             </Link>
-          </div>
-          <p className="text-xs text-gray-500 max-w-xs text-left md:text-right">
+          </p>
+          <p className=" text-gray-500 max-w-xs text-left md:text-right">
             Dies ist nicht der Webauftritt des Schweizer Uhrenherstellers Tissot
             S.A GmbH. Diesen finden Sie unter{' '}
             <a

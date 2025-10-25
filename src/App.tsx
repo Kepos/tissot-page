@@ -20,6 +20,7 @@ function App() {
 
   const pageTeasersRef = useRef<HTMLDivElement>(null);
 
+  // handles the parallax of the wappen & welcome text
   const y = useParallax(scrollYProgress, 500);
 
   const opacity = useTransform(scrollYProgress, [0, 0.1, 1], [1, 0, 0]);
@@ -111,7 +112,7 @@ function App() {
         style={{ y, scale }}
         className="z-10 hidden md:block"
       >
-        <div className="flex w-full justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
+        <div className="flex w-full min-h-[500px] justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
           <img src={wappen} className="w-md" />
         </div>
       </motion.div>

@@ -56,7 +56,7 @@ export default function TeaserGrid() {
                 scale: 1,
                 transition: {
                   delay:
-                    window.innerWidth > 1023 ? 0.3 * ((index % 3) + 1) : 0.3,
+                    window.innerWidth > 1023 ? 0.1 * ((index % 3) + 1) : 0.1,
                   duration: 1,
                   ease: 'easeInOut',
                 },
