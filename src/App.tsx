@@ -27,7 +27,7 @@ function App() {
   const scale = useTransform(scrollYProgress, [0, 0.2, 1], [1, 0.8, 0.8]);
 
   // const smscale = useTransform(scrollY, [0, 600, 600], [1, 0.8, 0.8]);
-  const smy = useTransform(scrollY, [0, 1000, 1000], [-0, 300, 300]);
+  const smy = useTransform(scrollY, [0, 1000, 1000], [-0, 250, 250]);
 
   function scrollAndClick(item: string) {
     if (item === '') {
@@ -131,7 +131,7 @@ function App() {
           transition: { delay: 2, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y, scale }}
-        className="z-10 hidden md:block"
+        className="z-10 hidden xl:block"
       >
         <div className="flex w-full min-h-[500px] justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
           <img src={wappen} className="w-md" />
@@ -147,7 +147,7 @@ function App() {
           transition: { delay: 2, duration: 2, ease: 'easeInOut' },
         }}
         style={{ y: smy }}
-        className="z-10 md:hidden"
+        className="z-10 xl:hidden"
       >
         <div className="flex w-full justify-end md:-mt-70 -mt-60 xl:ml-0 ml-24 z-10">
           <img src={wappen} className="w-md" />
@@ -174,7 +174,7 @@ function App() {
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-4xl sm:text-5xl mb-3 md:mt-0 mt-28">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-4xl sm:text-5xl mb-3 xl:mt-0 mt-28">
           Hallo!
         </h2>
       </motion.div>
