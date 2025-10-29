@@ -1,6 +1,6 @@
-import wappen from './assets/wappen.png';
+import wappen from './assets/wappenp.webp';
 import goldwappen from './assets/wappen-gold.png';
-import filz from './assets/filzhintergrund.jpg';
+import filz from './assets/filzhintergrund.webp';
 import './App.css';
 import Header from './components/Header';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
@@ -46,11 +46,32 @@ function App() {
 
   const HomePage = () => (
     <>
-      <img
+      {/* <img
         src={filz}
         alt="Hintergrund Struktur"
         className="fixed inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
+      /> */}
+      <div
+        className="fixed inset-0 opacity-5 pointer-events-none select-none hidden sm:inline"
+        style={{
+          backgroundImage: `url(${filz})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '50% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundPosition: 'top left', // Startpunkt der Wiederholung
+        }}
       />
+
+      {/* Mobile Background Image: */}
+      <div
+        className="fixed inset-0 opacity-5 pointer-events-none select-none sm:hidden"
+        style={{
+          backgroundImage: `url(${filz})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '100% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundPosition: 'top left', // Startpunkt der Wiederholung
+        }}
+      />
+
       <Header onClickScroll={(item) => scrollAndClick(item)} />
 
       {/* Willkommen bei Tissot */}
@@ -153,7 +174,7 @@ function App() {
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Zapfino]  text-2xl mb-5 md:mt-0 mt-28">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-5xl mb-3 md:mt-0 mt-28">
           Hallo!
         </h2>
       </motion.div>
@@ -212,10 +233,10 @@ function App() {
           transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
         }}
         viewport={{ margin: '20px', once: true }}
-        className="text-center mt-8 pt-24"
+        className="text-center mt-6 pt-20"
         ref={pageTeasersRef}
       >
-        <h2 className="text-[#ffcd5e] font-[Zapfino] mb-4 text-2xl">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif] mb-3 text-5xl">
           Unsere besten Seiten
         </h2>
         <p>
@@ -261,7 +282,7 @@ function App() {
   );
 
   return (
-    <Router basename="/tissot-page">
+    <Router basename="/">
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

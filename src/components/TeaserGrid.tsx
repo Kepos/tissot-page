@@ -63,7 +63,7 @@ export default function TeaserGrid() {
               }}
               viewport={{ once: true }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.2 }}
             >
               <PageTeaser
                 title={item.title}

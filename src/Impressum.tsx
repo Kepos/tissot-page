@@ -1,15 +1,19 @@
 // src/pages/Impressum.jsx
 
-import filz from './assets/filzhintergrund.jpg';
+import filz from './assets/filzhintergrund.webp';
 import { Link } from 'react-router-dom';
 
 const Impressum = () => {
   return (
     <>
-      <img
-        src={filz}
-        alt="Hintergrund Struktur"
-        className="fixed inset-0 w-full h-full object-cover opacity-5 pointer-events-none select-none"
+      <div
+        className="fixed inset-0 opacity-5 pointer-events-none select-none"
+        style={{
+          backgroundImage: `url(${filz})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '50% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundPosition: 'top left', // Startpunkt der Wiederholung
+        }}
       />
       <header className="fixed top-0 left-0 w-full z-30">
         <div className="max-w-5xl mx-auto px-10 py-8 flex justify-between items-center">

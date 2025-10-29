@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Legitima';
-  src: local('Legitima'),
-    url('./fonts/Legitima/Legitima-Regular.ttf') format('truetype');
+  font-family: 'Baramond';
+  src: local('Baramond'),
+    url('./fonts/Baramond/Baramond.ttf') format('truetype');
   font-weight: normal;
 }
 
@@ -12,8 +12,21 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: 'Corinthia';
+  src: local('Corinthia'),
+    url('./fonts/Corinthia/Corinthia-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Ephesis';
+  src: local('Ephesis'),
+    url('./fonts/Ephesis/Ephesis-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
 :root {
-  font-family: Legitima, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Baramond, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-size: 15pt;
