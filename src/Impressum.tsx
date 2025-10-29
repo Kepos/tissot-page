@@ -7,11 +7,22 @@ const Impressum = () => {
   return (
     <>
       <div
-        className="fixed inset-0 opacity-5 pointer-events-none select-none"
+        className="fixed inset-0 opacity-5 pointer-events-none select-none hidden sm:inline"
         style={{
           backgroundImage: `url(${filz})`,
           backgroundRepeat: 'repeat',
-          backgroundSize: '50% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundSize: '100% 66vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundPosition: 'top left', // Startpunkt der Wiederholung
+        }}
+      />
+
+      {/* Mobile Background Image: */}
+      <div
+        className="fixed inset-0 opacity-5 pointer-events-none select-none sm:hidden"
+        style={{
+          backgroundImage: `url(${filz})`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '150vh 100%', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
           backgroundPosition: 'top left', // Startpunkt der Wiederholung
         }}
       />

@@ -56,7 +56,7 @@ function App() {
         style={{
           backgroundImage: `url(${filz})`,
           backgroundRepeat: 'repeat',
-          backgroundSize: '50% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundSize: '100% 66vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
           backgroundPosition: 'top left', // Startpunkt der Wiederholung
         }}
       />
@@ -67,7 +67,7 @@ function App() {
         style={{
           backgroundImage: `url(${filz})`,
           backgroundRepeat: 'repeat',
-          backgroundSize: '100% 50vw', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
+          backgroundSize: '150vh 100%', // Bild auf 1/4 skalieren (50% Breite, 50% Höhe)
           backgroundPosition: 'top left', // Startpunkt der Wiederholung
         }}
       />
@@ -174,7 +174,7 @@ function App() {
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-5xl mb-3 md:mt-0 mt-28">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-4xl sm:text-5xl mb-3 md:mt-0 mt-28">
           Hallo!
         </h2>
       </motion.div>
@@ -236,7 +236,7 @@ function App() {
         className="text-center mt-6 pt-20"
         ref={pageTeasersRef}
       >
-        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif] mb-3 text-5xl">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif] mb-3 text-4xl sm:text-5xl">
           Unsere besten Seiten
         </h2>
         <p>
