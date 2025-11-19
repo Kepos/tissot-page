@@ -45,7 +45,7 @@ function App() {
   }
 
   const HomePage = () => (
-    <>
+    <div className="relative">
       {/* <img
         src={filz}
         alt="Hintergrund Struktur"
@@ -162,7 +162,14 @@ function App() {
           transition: { delay: 3, duration: 1, ease: 'easeInOut' },
         }}
       >
-        <div className="w-[60px] md:h-[8px] h-[4px] bg-[#C40002] absolute top-[80vh]"></div>
+        <a
+          href="https://garten.tissot.de"
+          target="_blank"
+          className="md:w-auto w-full text-center absolute top-[120vh] md:top-[80vh] px-[30px] py-[10px] border border-[#ffcd5e] text-[#ffcd5e] "
+        >
+          Zum Gartenshop &gt;
+        </a>
+        <div className="md:hidden w-[60px] md:h-[8px] h-[4px] bg-[#C40002] absolute top-[80vh]"></div>
       </motion.div>
 
       {/* Hello Text */}
@@ -170,11 +177,11 @@ function App() {
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: 1,
-          transition: { delay: 0, duration: 1, ease: 'easeInOut' },
+          transition: { delay: 0, duration: 0.5, ease: 'easeInOut' },
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
-        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-4xl sm:text-5xl mb-3 xl:mt-0 mt-28">
+        <h2 className="text-[#ffcd5e] font-[Ephesis,Zapfino,serif]  text-4xl sm:text-5xl mb-3 xl:mt-0 mt-64">
           Hallo!
         </h2>
       </motion.div>
@@ -182,7 +189,7 @@ function App() {
         initial={{ opacity: 0 }}
         whileInView={{
           opacity: 1,
-          transition: { delay: 0.5, duration: 1, ease: 'easeInOut' },
+          transition: { delay: 0.5, duration: 0.5, ease: 'easeInOut' },
         }}
         viewport={{ margin: '-200px 0px', once: true }}
       >
@@ -278,7 +285,7 @@ function App() {
       </div> */}
       <div className="w-100 h-[200px]"></div>
       <Footer />
-    </>
+    </div>
   );
 
   return (
